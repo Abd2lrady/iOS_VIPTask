@@ -8,7 +8,7 @@
 import UIKit
 
 class PostsTVDelegate: NSObject {
-    var posts = [Post.ViewModel]()
+    var posts = [Posts.ViewModel]()
 }
 
 extension PostsTVDelegate: UITableViewDataSource {

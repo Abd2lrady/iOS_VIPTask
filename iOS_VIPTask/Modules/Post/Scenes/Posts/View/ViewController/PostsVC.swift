@@ -11,40 +11,22 @@ class PostsVC: UIViewController {
     
     @IBOutlet weak var postsTV: UITableView!
     
-    let PostsTableViewDelegate = PostsTVDelegate()
+    let postsTableViewDelegate = PostsTVDelegate()
+    lazy var postsInteractor: PostsInteractorProtocol! =         PostsInteractor(postsPresenter: PostsPresenter(postsView: self), postsService: RemotePostsService(remoteRepository: APIClient.shared))
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        //        APIClient.shared.request(for: .getPosts) { result in
-        //            print(result)
-        
         configPostsTV()
         
-        RemotePostsService().getPosts { [unowned self] result in
-            switch result {
-            case .success(let res):
-                let postsVM = res.data.map { post in
-                    Post.ViewModel(userID: "UserID: \(String(post.userID))",
-                                   post: post.title)
-                }
-                self.PostsTableViewDelegate.posts = postsVM
-                self.postsTV.reloadData()
-                
-            case .failure:
-                print("error")
-            }
-        }
-        
+        postsInteractor.getPosts(request: Posts.Request())
     }
-}
-
-
-extension PostsVC {
+    
     func configPostsTV() {
         
-        postsTV.delegate = self.PostsTableViewDelegate
-        postsTV.dataSource = self.PostsTableViewDelegate
+        postsTV.delegate = self.postsTableViewDelegate
+        postsTV.dataSource = self.postsTableViewDelegate
         
         let cellNib = UINib(nibName: "\(PostCell.self)",
                             bundle: .main)
@@ -52,6 +34,16 @@ extension PostsVC {
         postsTV.register(cellNib,
                          forCellReuseIdentifier: PostCell.reuseID)
     }
-    
 
 }
+
+
+extension PostsVC: PostsVCProtocol {
+    func showPosts(posts: [Posts.ViewModel]) {
+        self.postsTableViewDelegate.posts = posts
+        self.postsTV.reloadData()
+
+    }
+    
+}
+

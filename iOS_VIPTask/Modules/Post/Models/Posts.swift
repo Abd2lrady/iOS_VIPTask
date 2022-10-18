@@ -7,9 +7,12 @@
 
 import Foundation
 
-enum Post {
+enum Posts {
     struct Request {}
-    struct Response {}
+    
+    struct Response {
+        let posts: [PostEntity]
+    }
     
     struct ViewModel {
         let userID: String

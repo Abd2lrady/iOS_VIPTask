@@ -24,7 +24,7 @@ class PostCell: UITableViewCell {
 
 extension PostCell {
     
-    func cellConfig(post: Post.ViewModel) {
+    func cellConfig(post: Posts.ViewModel) {
         userIDLabel.text = post.userID
         postTitleLabel.text = post.post
     }
