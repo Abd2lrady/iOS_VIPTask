@@ -20,6 +20,10 @@
 		3CD6245A28FEA81A003AC8DF /* APIRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CD6245728FEA81A003AC8DF /* APIRouter.swift */; };
 		3CD6245B28FEA81A003AC8DF /* APIRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CD6245828FEA81A003AC8DF /* APIRouterProtocol.swift */; };
 		3CD6245E28FEA82C003AC8DF /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CD6245D28FEA82C003AC8DF /* Constants.swift */; };
+		3CD6246628FEAB1C003AC8DF /* PostEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CD6246528FEAB1C003AC8DF /* PostEntity.swift */; };
+		3CD6246828FEAB38003AC8DF /* RemotePostsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CD6246728FEAB38003AC8DF /* RemotePostsService.swift */; };
+		3CD6246A28FEAD92003AC8DF /* PostsGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CD6246928FEAD92003AC8DF /* PostsGateway.swift */; };
+		3CD6246C28FEB23B003AC8DF /* ServerResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CD6246B28FEB23B003AC8DF /* ServerResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +41,10 @@
 		3CD6245728FEA81A003AC8DF /* APIRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIRouter.swift; sourceTree = "<group>"; };
 		3CD6245828FEA81A003AC8DF /* APIRouterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIRouterProtocol.swift; sourceTree = "<group>"; };
 		3CD6245D28FEA82C003AC8DF /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		3CD6246528FEAB1C003AC8DF /* PostEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostEntity.swift; sourceTree = "<group>"; };
+		3CD6246728FEAB38003AC8DF /* RemotePostsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemotePostsService.swift; sourceTree = "<group>"; };
+		3CD6246928FEAD92003AC8DF /* PostsGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsGateway.swift; sourceTree = "<group>"; };
+		3CD6246B28FEB23B003AC8DF /* ServerResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +136,7 @@
 		3CD6243528FEA285003AC8DF /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				3CD6246428FEAB0D003AC8DF /* Posts */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -202,6 +211,7 @@
 			isa = PBXGroup;
 			children = (
 				3CD6244128FEA2BB003AC8DF /* Entites */,
+				3CD6246B28FEB23B003AC8DF /* ServerResponse.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -209,6 +219,7 @@
 		3CD6244128FEA2BB003AC8DF /* Entites */ = {
 			isa = PBXGroup;
 			children = (
+				3CD6246528FEAB1C003AC8DF /* PostEntity.swift */,
 			);
 			path = Entites;
 			sourceTree = "<group>";
@@ -246,6 +257,15 @@
 				3CD6245D28FEA82C003AC8DF /* Constants.swift */,
 			);
 			path = Constants;
+			sourceTree = "<group>";
+		};
+		3CD6246428FEAB0D003AC8DF /* Posts */ = {
+			isa = PBXGroup;
+			children = (
+				3CD6246928FEAD92003AC8DF /* PostsGateway.swift */,
+				3CD6246728FEAB38003AC8DF /* RemotePostsService.swift */,
+			);
+			path = Posts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -327,12 +347,16 @@
 			files = (
 				3CD6245A28FEA81A003AC8DF /* APIRouter.swift in Sources */,
 				3CD6242E28FEA19F003AC8DF /* AppDelegate + Extension.swift in Sources */,
+				3CD6246828FEAB38003AC8DF /* RemotePostsService.swift in Sources */,
+				3CD6246C28FEB23B003AC8DF /* ServerResponse.swift in Sources */,
 				3CD6244328FEA2BB003AC8DF /* PostsVC.swift in Sources */,
+				3CD6246A28FEAD92003AC8DF /* PostsGateway.swift in Sources */,
 				3CD6241928FE9FDE003AC8DF /* AppDelegate.swift in Sources */,
 				3CD6243028FEA1BD003AC8DF /* SceneDelegate + Extension.swift in Sources */,
 				3CD6241B28FE9FDE003AC8DF /* SceneDelegate.swift in Sources */,
 				3CD6245928FEA81A003AC8DF /* APIClient.swift in Sources */,
 				3CD6245B28FEA81A003AC8DF /* APIRouterProtocol.swift in Sources */,
+				3CD6246628FEAB1C003AC8DF /* PostEntity.swift in Sources */,
 				3CD6245E28FEA82C003AC8DF /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

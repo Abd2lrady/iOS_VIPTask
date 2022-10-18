@@ -8,15 +8,22 @@
 import UIKit
 
 class PostsVC: UIViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        APIClient.shared.request(for: .getPosts) { result in
-            print(result)
+        //        APIClient.shared.request(for: .getPosts) { result in
+        //            print(result)
+        
+        RemotePostsService().getPosts { result in
+            switch result {
+            case .success(let res):
+                print(res.data.count)
+            case .failure:
+                print("error")
+            }
         }
     }
-
-
 }
+
 
