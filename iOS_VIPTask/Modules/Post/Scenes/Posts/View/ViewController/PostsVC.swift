@@ -9,6 +9,7 @@ import UIKit
 
 class PostsVC: UIViewController {
     
+    @IBOutlet weak var postsTV: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.

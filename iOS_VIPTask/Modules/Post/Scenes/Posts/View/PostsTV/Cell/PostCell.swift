@@ -1,0 +1,32 @@
+//
+//  PostCell.swift
+//  iOS_VIPTask
+//
+//  Created by Fintech on 18/10/2022.
+//
+
+import UIKit
+
+class PostCell: UITableViewCell {
+    
+    @IBOutlet weak var userIDLabel: UILabel!
+    @IBOutlet weak var postLabel: UILabel!
+    
+    static let reuseID = "PostCell"
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        // Initialization code
+    }
+
+    
+}
+
+extension PostCell {
+    
+    func cellConfig(post: Post.viewModel) {
+        userIDLabel.text = post.userID
+        postLabel.text = post.post
+    }
+    
+}
