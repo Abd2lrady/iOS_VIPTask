@@ -11,7 +11,7 @@ enum Post {
     struct Request {}
     struct Response {}
     
-    struct viewModel {
+    struct ViewModel {
         let userID: String
         let post: String
     }

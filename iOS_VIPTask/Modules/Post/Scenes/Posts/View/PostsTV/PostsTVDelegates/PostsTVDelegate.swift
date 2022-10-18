@@ -8,7 +8,7 @@
 import UIKit
 
 class PostsTVDelegate: NSObject {
-    var posts = [PostEntity]()
+    var posts = [Post.ViewModel]()
 }
 
 extension PostsTVDelegate: UITableViewDataSource {
@@ -19,7 +19,14 @@ extension PostsTVDelegate: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView,
                    cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: PostCell.reuseID,
+                                                 for: indexPath) as? PostCell
+        else { fatalError("can`t dequeue post cell") }
+        
+        cell.cellConfig(post: posts[indexPath.row])
+        
+        return cell
     }
     
     

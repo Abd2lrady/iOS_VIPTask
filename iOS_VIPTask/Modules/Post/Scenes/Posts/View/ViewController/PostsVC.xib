@@ -19,17 +19,17 @@
             <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="WMk-j3-cDM">
-                    <rect key="frame" x="0.0" y="47" width="390" height="844"/>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="WMk-j3-cDM">
+                    <rect key="frame" x="0.0" y="47" width="390" height="768"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 </tableView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" systemColor="systemTealColor"/>
             <constraints>
-                <constraint firstItem="WMk-j3-cDM" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" id="2zP-cp-SSg"/>
                 <constraint firstItem="WMk-j3-cDM" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="5Yl-IX-HWs"/>
                 <constraint firstItem="WMk-j3-cDM" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="667-Tp-S0e"/>
+                <constraint firstItem="WMk-j3-cDM" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" constant="5" id="U3S-HD-5U9"/>
                 <constraint firstItem="WMk-j3-cDM" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="W0g-O6-Nj7"/>
             </constraints>
             <point key="canvasLocation" x="26" y="21"/>

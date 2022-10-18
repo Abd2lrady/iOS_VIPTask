@@ -10,7 +10,7 @@ import UIKit
 class PostCell: UITableViewCell {
     
     @IBOutlet weak var userIDLabel: UILabel!
-    @IBOutlet weak var postLabel: UILabel!
+    @IBOutlet weak var postTitleLabel: UILabel!
     
     static let reuseID = "PostCell"
     
@@ -24,9 +24,9 @@ class PostCell: UITableViewCell {
 
 extension PostCell {
     
-    func cellConfig(post: Post.viewModel) {
+    func cellConfig(post: Post.ViewModel) {
         userIDLabel.text = post.userID
-        postLabel.text = post.post
+        postTitleLabel.text = post.post
     }
     
 }

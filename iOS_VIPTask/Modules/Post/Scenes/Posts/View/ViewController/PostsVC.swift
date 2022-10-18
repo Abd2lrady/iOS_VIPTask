@@ -10,21 +10,48 @@ import UIKit
 class PostsVC: UIViewController {
     
     @IBOutlet weak var postsTV: UITableView!
+    
+    let PostsTableViewDelegate = PostsTVDelegate()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         //        APIClient.shared.request(for: .getPosts) { result in
         //            print(result)
         
-        RemotePostsService().getPosts { result in
+        configPostsTV()
+        
+        RemotePostsService().getPosts { [unowned self] result in
             switch result {
             case .success(let res):
-                print(res.data.count)
+                let postsVM = res.data.map { post in
+                    Post.ViewModel(userID: "UserID: \(String(post.userID))",
+                                   post: post.title)
+                }
+                self.PostsTableViewDelegate.posts = postsVM
+                self.postsTV.reloadData()
+                
             case .failure:
                 print("error")
             }
         }
+        
     }
 }
 
 
+extension PostsVC {
+    func configPostsTV() {
+        
+        postsTV.delegate = self.PostsTableViewDelegate
+        postsTV.dataSource = self.PostsTableViewDelegate
+        
+        let cellNib = UINib(nibName: "\(PostCell.self)",
+                            bundle: .main)
+        
+        postsTV.register(cellNib,
+                         forCellReuseIdentifier: PostCell.reuseID)
+    }
+    
+
+}
