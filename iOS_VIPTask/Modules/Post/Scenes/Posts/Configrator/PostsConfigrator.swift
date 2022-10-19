@@ -9,16 +9,24 @@ import UIKit
 
 class PostsConfigrator {
     
-    static func configureModule() -> UIViewController {
+    static func configureModule(navigator: UINavigationController) {
+        
         let view = PostsVC()
+        navigator.viewControllers.append(view)
+        
         let presenter = PostsPresenter(postsView: view)
+        
         let postsService = RemotePostsService()
+        let postsDataStore = PostsDataStore()
         let interactor = PostsInteractor(postsPresenter: presenter,
-                                         postsService: postsService)
-//        let router = Post
+                                         postsService: postsService,
+                                         postsDataStore: postsDataStore)
         view.postsInteractor = interactor
         
-        return view
+        let router = PostsRouter(navigator: navigator,
+                                 postsDataStore: postsDataStore)
+        view.router = router
+        
     }
 
 }

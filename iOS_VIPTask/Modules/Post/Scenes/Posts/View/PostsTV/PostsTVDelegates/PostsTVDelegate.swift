@@ -9,6 +9,7 @@ import UIKit
 
 class PostsTVDelegate: NSObject {
     var posts = [Posts.ViewModel]()
+    var selectedPost: ((Int) -> Void)?
 }
 
 extension PostsTVDelegate: UITableViewDataSource {
@@ -33,5 +34,8 @@ extension PostsTVDelegate: UITableViewDataSource {
 }
 
 extension PostsTVDelegate: UITableViewDelegate {
-    
+    func tableView(_ tableView: UITableView,
+                   didSelectRowAt indexPath: IndexPath) {
+        selectedPost?(indexPath.row)
+    }
 }

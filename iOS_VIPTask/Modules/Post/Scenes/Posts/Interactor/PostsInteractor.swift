@@ -14,10 +14,13 @@ protocol PostsInteractorProtocol {
 class PostsInteractor {
     let postsPresenter: PostsPresenterProtocol
     let postsService: PostsGateway
+    let postsDataStore: PostsDataStoreProtocol
     
     init(postsPresenter: PostsPresenterProtocol,
-         postsService: PostsGateway) {
+         postsService: PostsGateway,
+         postsDataStore: PostsDataStoreProtocol) {
         
+        self.postsDataStore = postsDataStore
         self.postsPresenter = postsPresenter
         self.postsService = postsService
     }
@@ -32,7 +35,7 @@ extension PostsInteractor: PostsInteractorProtocol {
             switch result {
             case .success(let res):
                 postsPresenter.presentPosts(from: Posts.Response(posts: res.data))
-
+                postsDataStore.savePosts(posts: Posts.Response(posts: res.data))
             case .failure:
                 print("error")
             }

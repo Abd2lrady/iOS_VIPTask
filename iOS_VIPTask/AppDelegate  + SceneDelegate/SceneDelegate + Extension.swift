@@ -10,8 +10,10 @@ extension SceneDelegate {
     func bootApp(scene: UIWindowScene) {
         let window = UIWindow(windowScene: scene)
         
-        let baseViewController = PostsConfigrator.configureModule()
-        let navigator = UINavigationController(rootViewController: baseViewController)
+        let navigator = UINavigationController()
+        PostsConfigrator.configureModule(navigator: navigator)
+
+
         window.rootViewController = navigator
         self.window = window
         self.window?.makeKeyAndVisible()

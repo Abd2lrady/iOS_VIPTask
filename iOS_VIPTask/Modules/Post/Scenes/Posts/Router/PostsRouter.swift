@@ -8,19 +8,29 @@
 import UIKit
 
 protocol PostsRouterProtocol: AnyObject {
-    
-    func navigateTo(post: Posts.ViewModel)
+        
+    func routeToPostDetails(postIndx: Int)
 }
 
 
 class PostsRouter: PostsRouterProtocol {
+    
     var navigator: UINavigationController
+    var postsDataStore: PostsDataStoreProtocol
 
-    init(navigator: UINavigationController) {
+    init(navigator: UINavigationController,
+         postsDataStore: PostsDataStoreProtocol) {
         self.navigator = navigator
+        self.postsDataStore = postsDataStore
     }
     
-    func navigateTo(post: Posts.ViewModel) {
-        
+    func routeToPostDetails(postIndx: Int) {
+        let post = postsDataStore.loadPost(at: postIndx)
+        print(post)
+//        let PostDetails = PostDetailsVC()
+//        
+//        navigator.pushViewController(PostDetails,
+//                                     animated: true)
     }
+    
 }

@@ -18,6 +18,11 @@ class PostCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
     }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        clearCell()
+    }
 
     
 }
@@ -27,6 +32,11 @@ extension PostCell {
     func cellConfig(post: Posts.ViewModel) {
         userIDLabel.text = post.userID
         postTitleLabel.text = post.post
+    }
+    
+    func clearCell() {
+        userIDLabel.text = ""
+        postTitleLabel.text = ""
     }
     
 }

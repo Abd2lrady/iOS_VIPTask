@@ -12,7 +12,10 @@ class PostsVC: UIViewController {
     @IBOutlet weak var postsTV: UITableView!
     
     let postsTableViewDelegate = PostsTVDelegate()
-    lazy var postsInteractor: PostsInteractorProtocol! =         PostsInteractor(postsPresenter: PostsPresenter(postsView: self), postsService: RemotePostsService(remoteRepository: APIClient.shared))
+    var postsInteractor: PostsInteractorProtocol!
+    var router: PostsRouterProtocol!
+
+//    =         PostsInteractor(postsPresenter: PostsPresenter(postsView: self), postsService: RemotePostsService(remoteRepository: APIClient.shared))
 
     
     override func viewDidLoad() {
@@ -33,8 +36,12 @@ class PostsVC: UIViewController {
         
         postsTV.register(cellNib,
                          forCellReuseIdentifier: PostCell.reuseID)
-    }
+        
+        postsTableViewDelegate.selectedPost = { [ weak self ] postIndex in
+            self?.router.routeToPostDetails(postIndx: postIndex)
+        }
 
+    }
 }
 
 
