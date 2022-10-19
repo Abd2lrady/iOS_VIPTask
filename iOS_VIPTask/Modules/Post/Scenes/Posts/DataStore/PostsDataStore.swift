@@ -10,7 +10,7 @@ import Foundation
 protocol PostsDataStoreProtocol {
     
     func savePosts(posts: Posts.Response)
-    func loadPost(at index: Int) -> PostEntity?
+    func getPostID(at index: Int) -> Int?
 }
 
 class PostsDataStore {
@@ -24,9 +24,9 @@ extension PostsDataStore: PostsDataStoreProtocol {
         self.posts?.append(contentsOf: posts.posts)        
     }
     
-    func loadPost(at index: Int) -> PostEntity? {
+    func getPostID(at index: Int) -> Int? {
          
-        return self.posts?[index]
+        return self.posts?[index].id
     }
     
     

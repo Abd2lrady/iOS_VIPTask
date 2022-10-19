@@ -13,21 +13,28 @@ class PostDetailsVC: UIViewController {
     @IBOutlet weak var postTitleLabel: UILabel!
     @IBOutlet weak var postLabel: UILabel!
     
+    var postDetailsInteractor: PostDetailsInteractorProtocol!
+    var postID: Int!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        postDetailsInteractor.getPostDetails(request: PostDetails.Request(postID: postID))
         // Do any additional setup after loading the view.
     }
     
 
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+}
+
+protocol PostDetailsVCProtocol: AnyObject {
+    func showPostDetails(post: PostDetails.ViewModel)
+}
+
+extension PostDetailsVC: PostDetailsVCProtocol {
+    
+    func showPostDetails(post: PostDetails.ViewModel) {
+        postIDLabel.text = post.postID
+        postTitleLabel.text = post.postTilte
+        postLabel.text = post.post
     }
-    */
-
 }

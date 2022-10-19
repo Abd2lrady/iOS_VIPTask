@@ -37,8 +37,8 @@ class PostsVC: UIViewController {
         postsTV.register(cellNib,
                          forCellReuseIdentifier: PostCell.reuseID)
         
-        postsTableViewDelegate.selectedPost = { [ weak self ] postIndex in
-            self?.router.routeToPostDetails(postIndx: postIndex)
+        postsTableViewDelegate.selectedPost = { [ weak self ] postID in
+            self?.router.routeToPostDetails(postID: postID)
         }
 
     }

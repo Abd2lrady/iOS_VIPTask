@@ -9,4 +9,7 @@ import Foundation
 
 protocol PostsGateway {
     func getPosts(completionHandler: @escaping (Result<ServerResponse<[PostEntity]>, Error>) -> Void)
+    
+    func getPostDetails(postID: Int,
+                        completionHandler: @escaping (Result<PostDetailsEntity, Error>) -> Void)
 }

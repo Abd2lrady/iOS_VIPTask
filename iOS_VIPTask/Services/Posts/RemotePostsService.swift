@@ -42,5 +42,25 @@ extension RemotePostsService: PostsGateway {
             }
         }
     }
+    
+    func getPostDetails(postID: Int,
+                        completionHandler: @escaping (Result<PostDetailsEntity, Error>) -> Void) {
+        remoteRepository.request(for: .getPostDetails(postID: postID)) { result in
+            switch result {
+            case .success(let data):
+                do {
+                    let response = try JSONDecoder().decode(PostDetailsEntity.self,
+                                                              from: data)
+                    completionHandler(.success(response))
+                } catch {
+                    completionHandler(.failure(PostServiceError.parseError))
+                }
+                
+            case .failure:
+                completionHandler(.failure(PostServiceError.businessError))
+            }
+        }
+    }
+
 }
 

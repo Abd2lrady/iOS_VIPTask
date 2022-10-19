@@ -9,7 +9,7 @@ import UIKit
 
 protocol PostsRouterProtocol: AnyObject {
         
-    func routeToPostDetails(postIndx: Int)
+    func routeToPostDetails(postID: Int)
 }
 
 
@@ -24,9 +24,14 @@ class PostsRouter: PostsRouterProtocol {
         self.postsDataStore = postsDataStore
     }
     
-    func routeToPostDetails(postIndx: Int) {
-        let post = postsDataStore.loadPost(at: postIndx)
-        print(post)
+    func routeToPostDetails(postID: Int) {
+        let postID = postsDataStore.getPostID(at: postID)
+        let view = PostDetailsVC()
+        view.postID = postID
+        PostDetailsConfigrator.configureModule(view: view)
+        navigator.pushViewController(view,
+                                     animated: true)
+//        print(postID)
 //        let PostDetails = PostDetailsVC()
 //        
 //        navigator.pushViewController(PostDetails,
