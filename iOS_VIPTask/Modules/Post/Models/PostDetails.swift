@@ -8,9 +8,7 @@
 import Foundation
 
 enum PostDetails {
-    struct Request {
-        let postID: Int
-    }
+    struct Request {   }
     
     struct Response {
         let postDetails: PostDetailsEntity

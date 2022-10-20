@@ -8,13 +8,13 @@
 import UIKit
 
 class PostDetailsConfigrator {
-    static func configureModule(view: PostDetailsVC) {
+    static func configureModule(view: PostDetailsVC, postID: Int) {
                 
         let presenter = PostDetailsPresenter(postView: view)
         
         let postDetailsService = RemotePostsService()
         let interactor = PostDetailsInteractor(postsService: postDetailsService,
-                                        postPresenter: presenter)
+                                               postPresenter: presenter, postID: postID)
         view.postDetailsInteractor = interactor
     
     }

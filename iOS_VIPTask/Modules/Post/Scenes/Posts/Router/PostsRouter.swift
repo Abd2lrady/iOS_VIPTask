@@ -27,8 +27,8 @@ class PostsRouter: PostsRouterProtocol {
     func routeToPostDetails(postID: Int) {
         let postID = postsDataStore.getPostID(at: postID)
         let view = PostDetailsVC()
-        view.postID = postID
-        PostDetailsConfigrator.configureModule(view: view)
+//        view.postID = postID
+        PostDetailsConfigrator.configureModule(view: view, postID: postID ?? 0)
         navigator.pushViewController(view,
                                      animated: true)
 //        print(postID)

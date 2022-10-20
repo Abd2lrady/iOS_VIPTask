@@ -14,11 +14,10 @@ class PostDetailsVC: UIViewController {
     @IBOutlet weak var postLabel: UILabel!
     
     var postDetailsInteractor: PostDetailsInteractorProtocol!
-    var postID: Int!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        postDetailsInteractor.getPostDetails(request: PostDetails.Request(postID: postID))
+        postDetailsInteractor.getPostDetails(request: PostDetails.Request())
         // Do any additional setup after loading the view.
     }
     
