@@ -12,8 +12,8 @@ class PostsVC: UIViewController {
     @IBOutlet weak var postsTV: UITableView!
     
     let postsTableViewDelegate = PostsTVDelegate()
-    var postsInteractor: PostsInteractorProtocol!
-    var router: PostsRouterProtocol!
+    var postsInteractor: PostsInteractorProtocol?
+    var router: PostsRouterProtocol?
 
 //    =         PostsInteractor(postsPresenter: PostsPresenter(postsView: self), postsService: RemotePostsService(remoteRepository: APIClient.shared))
 
@@ -23,7 +23,7 @@ class PostsVC: UIViewController {
         // Do any additional setup after loading the view.
         configPostsTV()
         
-        postsInteractor.getPosts(request: Posts.Request())
+        postsInteractor?.getPosts(request: Posts.Request())
     }
     
     func configPostsTV() {
@@ -36,9 +36,8 @@ class PostsVC: UIViewController {
         
         postsTV.register(cellNib,
                          forCellReuseIdentifier: PostCell.reuseID)
-        
         postsTableViewDelegate.selectedPost = { [ weak self ] postID in
-            self?.router.routeToPostDetails(postID: postID)
+            self?.router?.routeToPostDetails(postID: postID)
         }
 
     }
