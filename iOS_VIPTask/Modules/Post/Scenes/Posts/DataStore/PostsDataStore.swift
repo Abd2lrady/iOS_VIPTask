@@ -11,10 +11,11 @@ protocol PostsDataStoreProtocol {
     
     func savePosts(posts: Posts.Response)
     func getPostID(at index: Int) -> Int?
+    var posts: [PostEntity]? { get }
 }
 
 class PostsDataStore {
-    private var posts: [PostEntity]? = [PostEntity]()
+     var posts: [PostEntity]? = [PostEntity]()
 }
 
 extension PostsDataStore: PostsDataStoreProtocol {

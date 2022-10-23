@@ -14,10 +14,13 @@ class PostDetailsVC: UIViewController {
     @IBOutlet weak var postLabel: UILabel!
     
     var postDetailsInteractor: PostDetailsInteractorProtocol?
+    var postDetailsRouter: PostDetailsRouterProtocol?
+    var postDetailsPresenter: PostDetailsPresenterProtocol?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         postDetailsInteractor?.getPostDetails(request: PostDetails.Request())
+//        navigationController?.delegate = self
         // Do any additional setup after loading the view.
     }
     
@@ -37,3 +40,17 @@ extension PostDetailsVC: PostDetailsVCProtocol {
         postLabel.text = post.post
     }
 }
+
+//extension PostDetailsVC: UINavigationControllerDelegate {
+//
+//    func navigationController(_ navigationController: UINavigationController, didShow viewController: UIViewController, animated: Bool) {
+//        guard let source = navigationController.transitionCoordinator?.viewController(forKey: .from)
+//        else { return }
+//
+//        if navigationController.viewControllers.contains(source) { return }
+////        postDetailsRouter?.routeToPosts(with: id)
+//        print("poping the source")
+//    }
+//
+//}
+

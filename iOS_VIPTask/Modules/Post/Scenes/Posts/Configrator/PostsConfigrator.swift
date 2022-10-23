@@ -9,10 +9,9 @@ import UIKit
 
 class PostsConfigrator {
     
-    static func configureModule(navigator: UINavigationController) {
+    static func configureModule() -> UIViewController {
         
         let view = PostsVC()
-        navigator.viewControllers.append(view)
         
         let presenter = PostsPresenter(postsView: view)
         
@@ -23,9 +22,11 @@ class PostsConfigrator {
                                          postsDataStore: postsDataStore)
         view.postsInteractor = interactor
         
-        let router = PostsRouter(navigator: navigator,
+        let router = PostsRouter(view: view,
                                  postsDataStore: postsDataStore)
         view.router = router
+        
+        return view
         
     }
 

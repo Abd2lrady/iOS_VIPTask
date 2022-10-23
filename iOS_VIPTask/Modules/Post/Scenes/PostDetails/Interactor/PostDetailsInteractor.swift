@@ -9,13 +9,12 @@ import Foundation
 
 protocol PostDetailsInteractorProtocol {
     func getPostDetails(request: PostDetails.Request)
-    var postID: Int { get }
 }
 
 class PostDetailsInteractor {
     let postsService: PostsGateway
     let postPresenter: PostDetailsPresenterProtocol
-    let postID: Int
+    let postID: Int?
     
     init(postsService: PostsGateway,
          postPresenter: PostDetailsPresenterProtocol,
@@ -26,10 +25,10 @@ class PostDetailsInteractor {
     }
 }
 
-extension PostDetailsInteractor: PostDetailsInteractorProtocol {
+extension PostDetailsInteractor: PostDetailsInteractorProtocol, PostDetailsDataStoreProtocol {
 
     func getPostDetails(request: PostDetails.Request) {
-        postsService.getPostDetails(postID: postID) { [weak self] result in
+        postsService.getPostDetails(postID: postID ?? 0) { [weak self] result in
             switch result {
             case .failure:
                 print("error post Details")
