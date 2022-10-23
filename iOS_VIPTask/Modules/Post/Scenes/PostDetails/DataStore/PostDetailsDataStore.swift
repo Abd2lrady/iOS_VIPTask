@@ -8,9 +8,9 @@
 import Foundation
 
 protocol PostDetailsDataStoreProtocol {
-    var postID: Int? { get }
+    var postID: Int? { get set }
 }
 
-class PostDetailsDataStore {
+class PostDetailsDataStore: PostDetailsDataStoreProtocol {
     var postID: Int?
 }

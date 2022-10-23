@@ -14,7 +14,7 @@ protocol PostsInteractorProtocol {
 class PostsInteractor {
     let postsPresenter: PostsPresenterProtocol
     let postsService: PostsGateway
-    let postsDataStore: PostsDataStoreProtocol
+    var postsDataStore: PostsDataStoreProtocol
     
     init(postsPresenter: PostsPresenterProtocol,
          postsService: PostsGateway,
@@ -34,8 +34,10 @@ extension PostsInteractor: PostsInteractorProtocol {
         postsService.getPosts { [unowned self] result in
             switch result {
             case .success(let res):
-                postsPresenter.presentPosts(from: Posts.Response(posts: res.data))
-                postsDataStore.savePosts(posts: Posts.Response(posts: res.data))
+                postsDataStore.posts = res.data
+                postsPresenter.presentPosts(from: Posts.Response(posts: res.data, postIDs: postsDataStore.postsIDs))
+
+//                postsDataStore.savePosts(posts: Posts.Response(posts: res.data, postIDs: <#[Int?]#>))
             case .failure:
                 print("error")
             }

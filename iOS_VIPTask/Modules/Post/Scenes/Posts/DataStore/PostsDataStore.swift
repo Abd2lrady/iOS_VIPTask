@@ -11,18 +11,21 @@ protocol PostsDataStoreProtocol {
     
     func savePosts(posts: Posts.Response)
     func getPostID(at index: Int) -> Int?
-    var posts: [PostEntity]? { get }
+    var posts: [PostEntity]? { get set }
+    var postsIDs: Int? { get set }
 }
 
 class PostsDataStore {
      var posts: [PostEntity]? = [PostEntity]()
+    var postsIDs: Int?
 }
 
 extension PostsDataStore: PostsDataStoreProtocol {
+    
 
     func savePosts(posts: Posts.Response) {
         
-        self.posts?.append(contentsOf: posts.posts)        
+        self.postsIDs = posts.postIDs
     }
     
     func getPostID(at index: Int) -> Int? {

@@ -7,33 +7,35 @@
 
 import UIKit
 
-protocol PostDetailsRouterProtocol {
+protocol PostDetailsRouterProtocol: AnyObject {
+//    func routeToPosts(with Id: Int)
+}
+
+protocol PostDetailsRouterDelegateProtocol: AnyObject {
     func routeToPosts(with Id: Int)
 }
 
-class PostDetailsRouter: NSObject {
+
+class PostDetailsRouter: NSObject, PostDetailsRouterProtocol {
     weak var view: UIViewController?
+    var dataStore: PostDetailsDataStoreProtocol
+    weak var delegate: PostDetailsRouterDelegateProtocol?
     
-    init(view: UIViewController) {
+    init(view: UIViewController,
+         dataStore: PostDetailsDataStoreProtocol) {
         self.view = view
+        self.dataStore = dataStore
     }
 }
 
-extension PostDetailsRouter: PostDetailsRouterProtocol  {
-    func routeToPosts(with Id: Int) {
-        print("poping the source with \(Id)")
-    }
-    
-    
-}
+
 
 extension PostDetailsRouter: UINavigationControllerDelegate {
     func navigationController(_ navigationController: UINavigationController, didShow viewController: UIViewController, animated: Bool) {
         guard let source = navigationController.transitionCoordinator?.viewController(forKey: .from)
         else { return }
-        
         if navigationController.viewControllers.contains(source) { return }
-        routeToPosts(with: 1)
+        delegate?.routeToPosts(with: dataStore.postID ?? 0)
     }
 }
 

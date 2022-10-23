@@ -12,10 +12,12 @@ enum Posts {
     
     struct Response {
         let posts: [PostEntity]
+        let postIDs: Int?
     }
     
     struct ViewModel {
         let userID: String
         let post: String
+        var postID: String?
     }
 }

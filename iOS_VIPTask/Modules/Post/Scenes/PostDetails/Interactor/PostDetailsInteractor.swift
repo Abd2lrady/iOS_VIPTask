@@ -12,27 +12,32 @@ protocol PostDetailsInteractorProtocol {
 }
 
 class PostDetailsInteractor {
-    let postsService: PostsGateway
+    let postService: PostsGateway
     let postPresenter: PostDetailsPresenterProtocol
+    var postDetailsDataStore: PostDetailsDataStoreProtocol
     let postID: Int?
     
     init(postsService: PostsGateway,
          postPresenter: PostDetailsPresenterProtocol,
+         postDetailsDataStore: PostDetailsDataStoreProtocol,
          postID: Int) {
-        self.postsService = postsService
+        self.postService = postsService
         self.postPresenter = postPresenter
+        self.postDetailsDataStore = postDetailsDataStore
         self.postID = postID
     }
 }
 
-extension PostDetailsInteractor: PostDetailsInteractorProtocol, PostDetailsDataStoreProtocol {
+extension PostDetailsInteractor: PostDetailsInteractorProtocol {
 
     func getPostDetails(request: PostDetails.Request) {
-        postsService.getPostDetails(postID: postID ?? 0) { [weak self] result in
+        postService.getPostDetails(postID: (postID ?? 0) + 1) { [weak self] result in
             switch result {
             case .failure:
                 print("error post Details")
             case .success(let res):
+                let fetchedId = res.id
+                self?.postDetailsDataStore.postID = fetchedId
                 self?.postPresenter.presentPostDetails(postDetails: PostDetails.Response(postDetails: res))
             }
         }

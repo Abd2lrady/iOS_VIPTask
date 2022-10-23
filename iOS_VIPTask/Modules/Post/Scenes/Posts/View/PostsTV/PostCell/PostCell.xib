@@ -9,41 +9,50 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PostCell" rowHeight="124" id="KGk-i7-Jjw" customClass="PostCell" customModule="iOS_VIPTask" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="322" height="124"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PostCell" rowHeight="171" id="KGk-i7-Jjw" customClass="PostCell" customModule="iOS_VIPTask" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="322" height="171"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="322" height="124"/>
+                <rect key="frame" x="0.0" y="0.0" width="322" height="171"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fQf-nS-gK7">
-                        <rect key="frame" x="5" y="5" width="41.333333333333336" height="20.333333333333332"/>
+                        <rect key="frame" x="5" y="54.000000000000007" width="41.333333333333336" height="20.333333333333336"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xs3-aY-7YE">
-                        <rect key="frame" x="5" y="33.333333333333336" width="312" height="85.666666666666657"/>
+                        <rect key="frame" x="5" y="82.333333333333314" width="312" height="83.666666666666686"/>
                         <fontDescription key="fontDescription" type="system" weight="black" pointSize="50"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="253" text="not fetched" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MZ6-PT-e9X" userLabel="postID Label">
+                        <rect key="frame" x="117" y="21" width="88" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="fQf-nS-gK7" firstAttribute="top" secondItem="MZ6-PT-e9X" secondAttribute="bottom" constant="12" id="4oV-Ks-kOe"/>
+                    <constraint firstItem="MZ6-PT-e9X" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="DYo-cU-EId"/>
                     <constraint firstItem="Xs3-aY-7YE" firstAttribute="top" secondItem="fQf-nS-gK7" secondAttribute="bottom" constant="8" id="H4X-lt-vyk"/>
                     <constraint firstItem="Xs3-aY-7YE" firstAttribute="leading" secondItem="fQf-nS-gK7" secondAttribute="leading" id="PIR-Jz-hSM"/>
                     <constraint firstAttribute="trailing" secondItem="Xs3-aY-7YE" secondAttribute="trailing" constant="5" id="Rev-BE-TSb"/>
-                    <constraint firstItem="fQf-nS-gK7" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="piv-L9-jRR"/>
+                    <constraint firstItem="MZ6-PT-e9X" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="21" id="aoK-0S-jtn"/>
                     <constraint firstAttribute="bottom" secondItem="Xs3-aY-7YE" secondAttribute="bottom" constant="5" id="vvE-F7-sg3"/>
                     <constraint firstItem="fQf-nS-gK7" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="5" id="zl2-EX-8Vt"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="postIDLabel" destination="MZ6-PT-e9X" id="ULI-2R-W2x"/>
                 <outlet property="postTitleLabel" destination="Xs3-aY-7YE" id="wcT-Zl-ubj"/>
                 <outlet property="userIDLabel" destination="fQf-nS-gK7" id="0ah-el-WQE"/>
             </connections>
-            <point key="canvasLocation" x="-10.769230769230768" y="49.052132701421797"/>
+            <point key="canvasLocation" x="-10.769230769230768" y="32.345971563981038"/>
         </tableViewCell>
     </objects>
 </document>

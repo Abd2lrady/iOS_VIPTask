@@ -11,7 +11,8 @@ class PostCell: UITableViewCell {
     
     @IBOutlet weak var userIDLabel: UILabel!
     @IBOutlet weak var postTitleLabel: UILabel!
-    
+    @IBOutlet weak var postIDLabel: UILabel!
+        
     static let reuseID = "PostCell"
     
     override func awakeFromNib() {
@@ -32,11 +33,13 @@ extension PostCell {
     func cellConfig(post: Posts.ViewModel) {
         userIDLabel.text = post.userID
         postTitleLabel.text = post.post
+        postIDLabel.text = post.postID ?? "Not Fetched"
     }
     
     func clearCell() {
         userIDLabel.text = ""
         postTitleLabel.text = ""
+        postIDLabel.text = "Not Fetched"
     }
     
 }

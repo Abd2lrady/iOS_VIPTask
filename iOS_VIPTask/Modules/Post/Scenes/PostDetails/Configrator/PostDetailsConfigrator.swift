@@ -14,11 +14,15 @@ class PostDetailsConfigrator {
         let presenter = PostDetailsPresenter(postView: view)
         
         let postDetailsService = RemotePostsService()
+        let dataStore = PostDetailsDataStore()
         let interactor = PostDetailsInteractor(postsService: postDetailsService,
-                                               postPresenter: presenter, postID: postID)
-        let router = PostDetailsRouter(view: view)
-        view.postDetailsPresenter = presenter
+                                               postPresenter: presenter,
+                                               postDetailsDataStore: dataStore,
+                                               postID: postID)
+        let router = PostDetailsRouter(view: view,
+                                       dataStore: dataStore)
         view.postDetailsRouter = router
+        view.postDetailsPresenter = presenter
         view.postDetailsInteractor = interactor
         
         return view

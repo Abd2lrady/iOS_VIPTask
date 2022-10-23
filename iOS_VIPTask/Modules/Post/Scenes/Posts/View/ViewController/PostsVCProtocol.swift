@@ -5,8 +5,10 @@
 //  Created by Fintech on 18/10/2022.
 //
 
-import Foundation
+import UIKit
 
-protocol PostsVCProtocol: AnyObject {
-    func showPosts(posts: [Posts.ViewModel]) 
+protocol PostsVCProtocol: UIViewController, AnyObject {
+    func showPosts(posts: [Posts.ViewModel])
+    
+    var postsTV: UITableView { get set }
 }

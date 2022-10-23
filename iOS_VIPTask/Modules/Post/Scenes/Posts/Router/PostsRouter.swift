@@ -15,10 +15,10 @@ protocol PostsRouterProtocol: AnyObject {
 
 class PostsRouter: PostsRouterProtocol {
     
-    weak var view: UIViewController?
+    weak var view: PostsVCProtocol?
     var postsDataStore: PostsDataStoreProtocol
 
-    init(view: UIViewController,
+    init(view: PostsVCProtocol,
          postsDataStore: PostsDataStoreProtocol) {
         self.view = view
         self.postsDataStore = postsDataStore
@@ -28,9 +28,10 @@ class PostsRouter: PostsRouterProtocol {
 //        let postID = postsDataStore.getPostID(at: postID)
 //        let view = PostDetailsVC()
 //        view.postID = postID
-        let destination = PostDetailsConfigrator.configureModule(postID: postID ?? 0)
+        let destination = PostDetailsConfigrator.configureModule(postID: postID )
         
-        if let destination = destination as? PostDetailsVC, let router = destination.postDetailsRouter as? PostDetailsRouter{
+        if let destination = destination as? PostDetailsVC, let router = destination.postDetailsRouter as? PostDetailsRouter {
+            router.delegate = self
             view?.navigationController?.delegate = router
         }
         view?.navigationController?.pushViewController(destination,
@@ -41,5 +42,14 @@ class PostsRouter: PostsRouterProtocol {
 //        navigator.pushViewController(PostDetails,
 //                                     animated: true)
     }
+    
+}
+
+extension PostsRouter: PostDetailsRouterDelegateProtocol {
+    func routeToPosts(with id: Int) {
+        postsDataStore.postsIDs = id
+        view?.title = "\(id)"
+    }
+    
     
 }
