@@ -28,7 +28,9 @@ class PostsVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        _postsTV.reloadData()
+        postsInteractor?.getPostId(request: .setTitle(at: router?.postID, id: router?.postID ?? 0))
+
+//        _postsTV.reloadData()
     }
     
     func configPostsTV() {

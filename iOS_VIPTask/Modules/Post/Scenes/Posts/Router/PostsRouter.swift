@@ -10,10 +10,17 @@ import UIKit
 protocol PostsRouterProtocol: AnyObject {
         
     func routeToPostDetails(postID: Int)
+    var postID: Int? { get }
 }
 
 
 class PostsRouter: PostsRouterProtocol {
+    var postID: Int? {
+        get {
+            postsDataStore.postIDs
+        }
+    }
+    
     
     weak var view: PostsVCProtocol?
     var postsDataStore: PostsDataStoreProtocol
@@ -47,7 +54,7 @@ class PostsRouter: PostsRouterProtocol {
 
 extension PostsRouter: PostDetailsRouterDelegateProtocol {
     func routeToPosts(with id: Int) {
-        postsDataStore.postsIDs = id
+        postsDataStore.postIDs = id
         view?.title = "\(id)"
     }
     

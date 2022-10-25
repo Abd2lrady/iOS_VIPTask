@@ -8,7 +8,11 @@
 import Foundation
 
 enum Posts {
-    struct Request {}
+    struct Request {
+        enum PostCell {
+            case setTitle(at: Int?, id: Int)
+        }
+    }
     
     struct Response {
         let posts: [PostEntity]

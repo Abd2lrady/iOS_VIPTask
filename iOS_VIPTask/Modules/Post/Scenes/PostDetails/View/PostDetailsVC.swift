@@ -19,7 +19,10 @@ class PostDetailsVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        postDetailsInteractor?.getPostDetails(request: PostDetails.Request())
+        Task {
+            
+            try await postDetailsInteractor?.getPostDetails(request: PostDetails.Request())
+        }
 //        navigationController?.delegate = self
         // Do any additional setup after loading the view.
     }
@@ -35,9 +38,12 @@ protocol PostDetailsVCProtocol: AnyObject {
 extension PostDetailsVC: PostDetailsVCProtocol {
     
     func showPostDetails(post: PostDetails.ViewModel) {
-        postIDLabel.text = post.postID
-        postTitleLabel.text = post.postTilte
-        postLabel.text = post.post
+        DispatchQueue.main.async {
+            self.postIDLabel.text = post.postID
+            self.postTitleLabel.text = post.postTilte
+            self.postLabel.text = post.post
+
+        }
     }
 }
 

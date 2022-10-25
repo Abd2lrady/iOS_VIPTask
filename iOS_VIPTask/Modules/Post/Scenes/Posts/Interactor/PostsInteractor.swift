@@ -9,6 +9,7 @@ import Foundation
 
 protocol PostsInteractorProtocol {    
     func getPosts(request: Posts.Request)
+    func getPostId(request: Posts.Request.PostCell)
 }
 
 class PostsInteractor {
@@ -28,6 +29,17 @@ class PostsInteractor {
 
 
 extension PostsInteractor: PostsInteractorProtocol {
+    func getPostId(request: Posts.Request.PostCell) {
+        switch request {
+        case .setTitle(let indx, let id):
+ // MARK: -
+ // TODO: - trying to create vm for cell and invoke reload table view
+//            postsPresenter.
+//            postsDataStore.postsIDs
+            print(indx, id)
+        }
+    }
+    
     
     func getPosts(request: Posts.Request) {
          
@@ -35,7 +47,7 @@ extension PostsInteractor: PostsInteractorProtocol {
             switch result {
             case .success(let res):
                 postsDataStore.posts = res.data
-                postsPresenter.presentPosts(from: Posts.Response(posts: res.data, postIDs: postsDataStore.postsIDs))
+                postsPresenter.presentPosts(from: Posts.Response(posts: res.data, postIDs: postsDataStore.postIDs))
 
 //                postsDataStore.savePosts(posts: Posts.Response(posts: res.data, postIDs: <#[Int?]#>))
             case .failure:

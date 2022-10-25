@@ -12,4 +12,6 @@ protocol PostsGateway {
     
     func getPostDetails(postID: Int,
                         completionHandler: @escaping (Result<PostDetailsEntity, Error>) -> Void)
+    
+    func throwingGetPostDetails(postID: Int) async throws -> PostDetailsEntity
 }
