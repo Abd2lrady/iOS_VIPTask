@@ -10,5 +10,5 @@ import UIKit
 protocol PostsVCProtocol: UIViewController, AnyObject {
     func showPosts(posts: [Posts.ViewModel])
     
-    var postsTV: UITableView { get set }
+//    var postsTV: UITableView { get set }
 }

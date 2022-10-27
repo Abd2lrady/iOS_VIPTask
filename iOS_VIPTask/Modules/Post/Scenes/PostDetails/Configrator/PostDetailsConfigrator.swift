@@ -21,9 +21,9 @@ class PostDetailsConfigrator {
                                                postID: postID)
         let router = PostDetailsRouter(view: view,
                                        dataStore: dataStore)
-        view.postDetailsRouter = router
-        view.postDetailsPresenter = presenter
-        view.postDetailsInteractor = interactor
+        view.router = router
+//        view.presenter = presenter
+        view.interactor = interactor
         
         return view
 

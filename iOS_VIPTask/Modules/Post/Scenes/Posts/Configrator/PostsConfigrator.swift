@@ -20,7 +20,7 @@ class PostsConfigrator {
         let interactor = PostsInteractor(postsPresenter: presenter,
                                          postsService: postsService,
                                          postsDataStore: postsDataStore)
-        view.postsInteractor = interactor
+        view.interactor = interactor
         
         let router = PostsRouter(view: view,
                                  postsDataStore: postsDataStore)

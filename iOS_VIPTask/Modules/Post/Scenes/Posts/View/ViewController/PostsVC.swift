@@ -9,10 +9,10 @@ import UIKit
 
 class PostsVC: UIViewController {
     
-    @IBOutlet weak var _postsTV: UITableView!
+    @IBOutlet weak var postsTV: UITableView!
     
     let postsTableViewDelegate = PostsTVDelegate()
-    var postsInteractor: PostsInteractorProtocol?
+    var interactor: PostsInteractorProtocol?
     var router: PostsRouterProtocol?
 
 //    =         PostsInteractor(postsPresenter: PostsPresenter(postsView: self), postsService: RemotePostsService(remoteRepository: APIClient.shared))
@@ -23,25 +23,25 @@ class PostsVC: UIViewController {
         // Do any additional setup after loading the view.
         configPostsTV()
         
-        postsInteractor?.getPosts(request: Posts.Request())
+        interactor?.getPosts(request: Posts.Request())
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        postsInteractor?.getPostId(request: .setTitle(at: router?.postID, id: router?.postID ?? 0))
+        interactor?.getPostId(request: .setTitle(at: router?.postID, id: router?.postID ?? 0))
 
 //        _postsTV.reloadData()
     }
     
     func configPostsTV() {
         
-        _postsTV.delegate = self.postsTableViewDelegate
-        _postsTV.dataSource = self.postsTableViewDelegate
+        postsTV.delegate = self.postsTableViewDelegate
+        postsTV.dataSource = self.postsTableViewDelegate
         
         let cellNib = UINib(nibName: "\(PostCell.self)",
                             bundle: .main)
         
-        _postsTV.register(cellNib,
+        postsTV.register(cellNib,
                          forCellReuseIdentifier: PostCell.reuseID)
         postsTableViewDelegate.selectedPost = { [ weak self ] postID in
             self?.router?.routeToPostDetails(postID: postID)
@@ -54,17 +54,17 @@ class PostsVC: UIViewController {
 extension PostsVC: PostsVCProtocol {
     func showPosts(posts: [Posts.ViewModel]) {
         self.postsTableViewDelegate.posts = posts
-        self._postsTV.reloadData()
+        self.postsTV.reloadData()
 
     }
-    
-    var postsTV: UITableView {
-        get {
-            return _postsTV
-        } set {
-            _postsTV = newValue
-        }
-    }
+//    
+//    var postsTV: UITableView {
+//        get {
+//            return postsTV
+//        } set {
+//            postsTV = newValue
+//        }
+//    }
     
 }
 

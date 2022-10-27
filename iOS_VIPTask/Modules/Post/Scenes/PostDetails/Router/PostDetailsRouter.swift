@@ -8,7 +8,9 @@
 import UIKit
 
 protocol PostDetailsRouterProtocol: AnyObject {
-//    func routeToPosts(with Id: Int)
+//    var view: UIViewController? { get set }
+//    var dataStore: PostDetailsDataStoreProtocol { get set }
+//    var delegate: PostDetailsRouterDelegateProtocol? { get set }
 }
 
 protocol PostDetailsRouterDelegateProtocol: AnyObject {

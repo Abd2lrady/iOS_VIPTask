@@ -37,7 +37,7 @@ class PostsRouter: PostsRouterProtocol {
 //        view.postID = postID
         let destination = PostDetailsConfigrator.configureModule(postID: postID )
         
-        if let destination = destination as? PostDetailsVC, let router = destination.postDetailsRouter as? PostDetailsRouter {
+        if let destination = destination as? PostDetailsVC, let router = destination.router as? PostDetailsRouter {
             router.delegate = self
             view?.navigationController?.delegate = router
         }

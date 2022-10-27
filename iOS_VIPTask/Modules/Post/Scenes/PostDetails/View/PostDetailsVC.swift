@@ -13,15 +13,15 @@ class PostDetailsVC: UIViewController {
     @IBOutlet weak var postTitleLabel: UILabel!
     @IBOutlet weak var postLabel: UILabel!
     
-    var postDetailsInteractor: PostDetailsInteractorProtocol?
-    var postDetailsRouter: PostDetailsRouterProtocol?
-    var postDetailsPresenter: PostDetailsPresenterProtocol?
+    var interactor: PostDetailsInteractorProtocol?
+    var router: PostDetailsRouterProtocol?
+//    var presenter: PostDetailsPresenterProtocol?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         Task {
             
-            try await postDetailsInteractor?.getPostDetails(request: PostDetails.Request())
+            try await interactor?.getPostDetails(request: PostDetails.Request())
         }
 //        navigationController?.delegate = self
         // Do any additional setup after loading the view.
