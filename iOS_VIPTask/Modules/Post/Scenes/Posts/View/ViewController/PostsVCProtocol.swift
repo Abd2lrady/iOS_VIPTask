@@ -7,8 +7,8 @@
 
 import UIKit
 
-protocol PostsVCProtocol: UIViewController, AnyObject {
+protocol PostsVCProtocol: AnyObject {
     func showPosts(posts: [Posts.ViewModel])
-    
+    func setTitle(title: String)
 //    var postsTV: UITableView { get set }
 }

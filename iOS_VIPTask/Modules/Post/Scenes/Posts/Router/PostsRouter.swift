@@ -22,10 +22,10 @@ class PostsRouter: PostsRouterProtocol {
     }
     
     
-    weak var view: PostsVCProtocol?
+    weak var view: PostsVC?
     var postsDataStore: PostsDataStoreProtocol
 
-    init(view: PostsVCProtocol,
+    init(view: PostsVC,
          postsDataStore: PostsDataStoreProtocol) {
         self.view = view
         self.postsDataStore = postsDataStore
@@ -35,11 +35,12 @@ class PostsRouter: PostsRouterProtocol {
 //        let postID = postsDataStore.getPostID(at: postID)
 //        let view = PostDetailsVC()
 //        view.postID = postID
-        let destination = PostDetailsConfigrator.configureModule(postID: postID )
+        let destination = PostsConfigrator.configurePostDetailsScene(postID: postID, interactorDelegate: (view?.interactor as? PostsInteractor))
+//        configurePostDetailsScene(postID: postID, interactorDelegate: view?.interactor)
         
         if let destination = destination as? PostDetailsVC, let router = destination.router as? PostDetailsRouter {
-            router.delegate = self
-            view?.navigationController?.delegate = router
+//            router.delegate = self
+//            view?.navigationController?.delegate = router
         }
         view?.navigationController?.pushViewController(destination,
                                      animated: true)
@@ -55,7 +56,7 @@ class PostsRouter: PostsRouterProtocol {
 extension PostsRouter: PostDetailsRouterDelegateProtocol {
     func routeToPosts(with id: Int) {
         postsDataStore.postIDs = id
-        view?.title = "\(id)"
+//        view?.title = "\(id)"
     }
     
     

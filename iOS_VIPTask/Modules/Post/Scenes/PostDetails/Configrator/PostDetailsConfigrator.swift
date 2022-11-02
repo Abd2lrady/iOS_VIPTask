@@ -8,25 +8,5 @@
 import UIKit
 
 class PostDetailsConfigrator {
-    static func configureModule(postID: Int) -> UIViewController {
-                
-        let view = PostDetailsVC()
-        let presenter = PostDetailsPresenter(postView: view)
-        
-        let postDetailsService = RemotePostsService()
-        let dataStore = PostDetailsDataStore()
-        let interactor = PostDetailsInteractor(postsService: postDetailsService,
-                                               postPresenter: presenter,
-                                               postDetailsDataStore: dataStore,
-                                               postID: postID)
-        let router = PostDetailsRouter(view: view,
-                                       dataStore: dataStore)
-        view.router = router
-//        view.presenter = presenter
-        view.interactor = interactor
-        
-        return view
-
-    }
 
 }

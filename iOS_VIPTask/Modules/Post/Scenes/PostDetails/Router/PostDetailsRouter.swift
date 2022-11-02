@@ -17,7 +17,6 @@ protocol PostDetailsRouterDelegateProtocol: AnyObject {
     func routeToPosts(with Id: Int)
 }
 
-
 class PostDetailsRouter: NSObject, PostDetailsRouterProtocol {
     weak var view: UIViewController?
     var dataStore: PostDetailsDataStoreProtocol
@@ -30,14 +29,13 @@ class PostDetailsRouter: NSObject, PostDetailsRouterProtocol {
     }
 }
 
-
-
-extension PostDetailsRouter: UINavigationControllerDelegate {
-    func navigationController(_ navigationController: UINavigationController, didShow viewController: UIViewController, animated: Bool) {
-        guard let source = navigationController.transitionCoordinator?.viewController(forKey: .from)
-        else { return }
-        if navigationController.viewControllers.contains(source) { return }
-        delegate?.routeToPosts(with: dataStore.postID ?? 0)
-    }
-}
+//extension PostDetailsRouter: UINavigationControllerDelegate {
+//    func navigationController(_ navigationController: UINavigationController, didShow viewController: UIViewController, animated: Bool) {
+////        guard let source = navigationController.transitionCoordinator?.viewController(forKey: .from)
+////        else { return }
+////        if navigationController.viewControllers.contains(source) { return }
+//        guard viewController as? PostsRouter != nil else { return }
+//        delegate?.routeToPosts(with: dataStore.postID ?? 0)
+//    }
+//}
 

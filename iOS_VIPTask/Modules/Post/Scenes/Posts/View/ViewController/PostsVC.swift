@@ -52,6 +52,10 @@ class PostsVC: UIViewController {
 
 
 extension PostsVC: PostsVCProtocol {
+    func setTitle(title: String) {
+        self.title = title
+    }
+    
     func showPosts(posts: [Posts.ViewModel]) {
         self.postsTableViewDelegate.posts = posts
         self.postsTV.reloadData()

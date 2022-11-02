@@ -48,7 +48,6 @@ extension PostsInteractor: PostsInteractorProtocol {
             case .success(let res):
                 postsDataStore.posts = res.data
                 postsPresenter.presentPosts(from: Posts.Response(posts: res.data, postIDs: postsDataStore.postIDs))
-
 //                postsDataStore.savePosts(posts: Posts.Response(posts: res.data, postIDs: <#[Int?]#>))
             case .failure:
                 print("error")
@@ -56,6 +55,13 @@ extension PostsInteractor: PostsInteractorProtocol {
         }
     }
     
+    
+    
+}
+extension PostsInteractor: PostDetailsInteractorDelegate {
+    func setPostId(indx: Int) {
+        postsPresenter.setTitle(indx: indx)
+    }
     
     
 }

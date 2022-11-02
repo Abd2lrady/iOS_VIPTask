@@ -16,7 +16,8 @@ class PostDetailsInteractor {
     let postPresenter: PostDetailsPresenterProtocol
     var postDetailsDataStore: PostDetailsDataStoreProtocol
     let postID: Int?
-    
+    weak var delegate: PostDetailsInteractorDelegate?
+
     init(postsService: PostsGateway,
          postPresenter: PostDetailsPresenterProtocol,
          postDetailsDataStore: PostDetailsDataStoreProtocol,
@@ -36,7 +37,8 @@ extension PostDetailsInteractor: PostDetailsInteractorProtocol {
         let fetchedId = entity.id
         self.postDetailsDataStore.postID = fetchedId
         self.postPresenter.presentPostDetails(postDetails: PostDetails.Response(postDetails: entity))
-
+//        print(Thread.isMainThread)
+        delegate?.setPostId(indx: fetchedId)
 //        postService.getPostDetails(postID: (postID ?? 0) + 1) { [weak self] result in
 //            switch result {
 //            case .failure:
@@ -49,4 +51,8 @@ extension PostDetailsInteractor: PostDetailsInteractorProtocol {
 //        }
     }
 
+}
+
+protocol PostDetailsInteractorDelegate: AnyObject {
+    func setPostId(indx: Int)
 }
